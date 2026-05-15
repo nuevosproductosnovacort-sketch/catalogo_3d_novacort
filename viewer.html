@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Novacort</title>
+
+  <script
+    type="module"
+    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+
+  <style>
+
+    /* =========================
+       BASE
+    ========================= */
+
+    body {
+
+      margin: 0;
+      overflow: hidden;
+
+      font-family: Arial, sans-serif;
+
+      background:
+      linear-gradient(
+        135deg,
+        #2a2a2a,
+        #1d1d1d
+      );
+
+    }
+
+    model-viewer {
+
+      width: 100vw;
+      height: 100vh;
+
+      background: transparent;
+
+    }
+
+
+    /* =========================
+       TITULO
+    ========================= */
+
+    .titulo {
+
+      position: absolute;
+
+      top: 20px;
+      left: 20px;
+
+      z-index: 10;
+
+      color: rgba(255,255,255,0.82);
+      font-size: 24px;
+      font-weight: bold;
+
+      letter-spacing: 1px;
+
+      pointer-events: none;
+
+    }
+
+
+    /* =========================
+       HOTSPOTS
+    ========================= */
+
+    .hotspot {
+
+      position: relative;
+
+      border: none;
+
+      background: transparent;
+
+      cursor: pointer;
+
+    }
+
+
+    /* =========================
+       DOT
+    ========================= */
+
+    .dot {
+
+      position: relative;
+
+      width: 18px;
+      height: 18px;
+
+      border-radius: 50%;
+
+      background: white;
+
+      border: 3px solid #111;
+
+      box-shadow:
+        0 0 18px rgba(255,255,255,0.75);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+      animation:
+        pulse 2s infinite;
+
+    }
+
+    .dot::before {
+
+      content: "";
+
+      position: absolute;
+
+      inset: -10px;
+
+      border-radius: 50%;
+
+      border: 2px solid rgba(255,255,255,0.25);
+
+      animation:
+        ringPulse 2s infinite;
+
+    }
+
+    .hotspot:hover .dot {
+
+      transform: scale(1.15);
+
+      box-shadow:
+        0 0 18px rgba(255,255,255,0.7);
+
+    }
+
+
+    /* =========================
+       TOOLTIP
+    ========================= */
+
+    .tooltip {
+
+      position: absolute;
+
+      left: 30px;
+      top: -25px;
+
+      width: 240px;
+
+      padding: 16px;
+
+      border-radius: 18px;
+
+      background: rgba(20,20,20,0.78);
+
+      color: white;
+
+      opacity: 0;
+
+      transform:
+        translateY(10px);
+
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+
+      pointer-events: none;
+
+      text-align: left;
+
+      backdrop-filter: blur(14px);
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.35);
+
+    }
+
+    .tooltip h3 {
+
+      margin-top: 0;
+
+      margin-bottom: 8px;
+
+      font-size: 16px;
+
+    }
+
+    .tooltip p {
+
+      margin: 0;
+
+      font-size: 14px;
+
+      line-height: 1.5;
+
+    }
+
+
+    /* =========================
+       HOTSPOT ACTIVO
+    ========================= */
+
+    .hotspot.active .tooltip {
+
+      opacity: 1;
+
+      transform:
+        translateY(0);
+
+    }
+
+.controls-info {
+
+  position: absolute;
+
+  left: 20px;
+  top: 60px;
+
+  z-index: 20;
+
+  padding: 14px 16px;
+
+  border-radius: 16px;
+
+  background: rgba(20,20,20,0.72);
+
+  color: white;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.3);
+
+  user-select: none;
+
+  pointer-events: none;
+
+}
+
+
+    /* =========================
+       ANIMACIONES
+    ========================= */
+
+    @keyframes pulse {
+
+      0% {
+
+        transform: scale(1);
+
+      }
+
+      50% {
+
+        transform: scale(1.08);
+
+      }
+
+      100% {
+
+        transform: scale(1);
+
+      }
+
+    }
+
+    @keyframes ringPulse {
+
+      0% {
+
+        transform: scale(0.9);
+
+        opacity: 0.7;
+
+      }
+
+      70% {
+
+        transform: scale(1.4);
+
+        opacity: 0;
+
+      }
+
+      100% {
+
+        opacity: 0;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- =========================
+       TITULO
+  ========================= -->
+
+  <div class="titulo">
+    Novacort
+  </div>
+
+
+<div class="controls-info">
+
+  <div>• Rotar: Click + arrastrar</div>
+
+  <div>• Zoom: Rueda del mouse</div>
+
+  <div>• Mover: Click derecho + arrastrar</div>
+
+  <div>• Reiniciar vista: Click zona gris</div>
+
+
+</div>
+
+  <!-- =========================
+       MODEL VIEWER
+  ========================= -->
+
+  <model-viewer
+
+    id="viewer"
+
+    src=""
+
+    alt="Cortinero 3D"
+
+    camera-controls
+
+    interaction-prompt="none"
+
+    touch-action="pan-y"
+
+    min-camera-orbit="auto auto 0.3m"
+
+    max-camera-orbit="auto auto 2m"
+
+    shadow-intensity="2.5"
+
+    shadow-softness="1.5"
+
+    exposure="0.8"
+
+    environment-image="hdri/studio3.hdr"
+
+    environment-rotation="60deg"
+
+    camera-orbit="-50deg 67.4deg 1.82m"
+
+    camera-target="-0.133m -0.007m 0.015m"
+
+    field-of-view="12deg"
+
+    tone-mapping="commerce"
+
+    ar
+
+  >
+
+
+  </model-viewer>
+
+
+  <!-- =========================
+       SCRIPT
+  ========================= -->
+
+<script>
+
+  // =========================
+  // VIEWER
+  // =========================
+
+  const viewer = document.querySelector("#viewer");
+
+
+  // =========================
+  // VARIABLES
+  // =========================
+
+  let productData;
+
+  let isDragging = false;
+
+  let autoRotateInterval;
+
+  let inactivityTimer;
+
+  // =========================
+  // CARGAR PRODUCTO
+  // =========================
+
+  async function loadProduct() {
+
+const params =
+  new URLSearchParams(window.location.search);
+
+const product =
+  params.get("product") || "cuadrado";
+
+const response =
+  await fetch(`./config/${product}.json`);
+    productData =
+      await response.json();
+
+    setupViewer();
+
+    createHotspots();
+setTimeout(() => {
+
+  startAutoRotate();
+
+}, 4000);
+  }
+
+
+  // =========================
+  // CONFIGURAR VIEWER
+  // =========================
+
+  function setupViewer() {
+
+    viewer.src =
+      productData.modelo;
+
+    viewer.setAttribute(
+      "environment-image",
+      productData.hdri
+    );
+
+    viewer.cameraOrbit =
+      productData.cameraOrbit;
+
+    viewer.cameraTarget =
+      productData.cameraTarget;
+
+    viewer.fieldOfView =
+      productData.fov;
+
+  }
+
+
+  // =========================
+  // CREAR HOTSPOTS
+  // =========================
+
+  function createHotspots() {
+
+    productData.hotspots.forEach((hotspotData) => {
+
+      const hotspot =
+        document.createElement("button");
+
+      hotspot.className = "hotspot";
+
+      hotspot.id = hotspotData.id;
+
+hotspot.slot = `hotspot-${hotspotData.id.replace("hotspot", "")}`;
+      hotspot.setAttribute(
+        "data-position",
+        hotspotData.position
+      );
+
+      hotspot.setAttribute(
+        "data-normal",
+        "0m 0m 0m"
+      );
+
+      hotspot.innerHTML = `
+
+        <div class="dot"></div>
+
+        <div class="tooltip">
+
+          <h3>${hotspotData.title}</h3>
+
+          <p>${hotspotData.description}</p>
+
+        </div>
+
+      `;
+
+      viewer.appendChild(hotspot);
+
+
+      // =========================
+      // EVENTO CLICK
+      // =========================
+
+      hotspot.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        activateHotspot(hotspot);
+
+        viewer.cameraTarget =
+          hotspotData.target;
+
+        viewer.cameraOrbit =
+          hotspotData.orbit;
+
+        viewer.fieldOfView =
+          hotspotData.fov;
+
+      });
+
+    });
+
+  }
+
+
+  // =========================
+  // ACTIVAR HOTSPOT
+  // =========================
+
+  function activateHotspot(activeHotspot) {
+
+    document
+      .querySelectorAll(".hotspot")
+      .forEach((hotspot) => {
+
+        hotspot.classList.remove("active");
+
+      });
+
+    activeHotspot.classList.add("active");
+
+  }
+
+
+  // =========================
+  // RESET CAMARA
+  // =========================
+
+  function resetCamera() {
+
+    viewer.cameraOrbit =
+      productData.cameraOrbit;
+
+    viewer.cameraTarget =
+      productData.cameraTarget;
+
+    viewer.fieldOfView =
+      productData.fov;
+
+    document
+      .querySelectorAll(".hotspot")
+      .forEach((hotspot) => {
+
+        hotspot.classList.remove("active");
+
+      });
+
+  }
+
+
+function startAutoRotate() {
+
+  if (!productData.autoRotate)
+    return;
+
+  stopAutoRotate();
+
+  autoRotateInterval = setInterval(() => {
+
+    const orbit =
+      viewer.getCameraOrbit();
+
+    const theta =
+      orbit.theta +
+      (
+        productData.autoRotateSpeed *
+        Math.PI / 180
+      );
+
+    viewer.cameraOrbit =
+      `${theta}rad ${orbit.phi}rad ${orbit.radius}m`;
+
+    viewer.jumpCameraToGoal();
+
+  }, 16);
+
+}
+
+
+function stopAutoRotate() {
+
+  if (autoRotateInterval) {
+
+    clearInterval(autoRotateInterval);
+
+    autoRotateInterval = null;
+
+  }
+
+}
+
+  // =========================
+  // DRAG
+  // =========================
+
+  viewer.addEventListener("pointerdown", () => {
+
+    isDragging = false;
+    stopAutoRotate();
+
+clearTimeout(inactivityTimer);
+
+  });
+
+  viewer.addEventListener("pointermove", () => {
+
+    isDragging = true;
+    clearTimeout(inactivityTimer);
+
+inactivityTimer = setTimeout(() => {
+
+  startAutoRotate();
+
+}, 6000);
+
+  });
+
+
+  // =========================
+  // RESET CLICK VACIO
+  // =========================
+
+  viewer.addEventListener("click", () => {
+
+    if (!isDragging) {
+
+      resetCamera();
+
+    }
+
+  });
+
+
+  // =========================
+  // DEBUG CAMARA
+  // =========================
+
+  function radToDeg(rad) {
+
+    return (
+      rad * 180 / Math.PI
+    ).toFixed(1);
+
+  }
+
+  viewer.addEventListener("camera-change", () => {
+
+    const orbit =
+      viewer.getCameraOrbit();
+
+    const target =
+      viewer.getCameraTarget();
+
+    console.clear();
+
+    console.log(`
+
+camera-orbit="${radToDeg(orbit.theta)}deg ${radToDeg(orbit.phi)}deg ${orbit.radius.toFixed(2)}m"
+
+camera-target="${target.x.toFixed(3)}m ${target.y.toFixed(3)}m ${target.z.toFixed(3)}m"
+
+    `);
+
+  });
+
+
+  // =========================
+  // INICIAR
+  // =========================
+
+loadProduct();
+
+
+</script>
+
+</body>
+
+</html>

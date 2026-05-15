@@ -1,0 +1,116 @@
+{
+  "nombre": "Novacort Cuadrado",
+
+  "modelo": "modelos/cuadrado.glb",
+
+  "hdri": "hdri/studio3.hdr",
+
+  "cameraOrbit": "-50deg 67.4deg 1.82m",
+
+  "cameraTarget": "-0.133m -0.007m 0.015m",
+
+  "fov": "12deg",
+  "autoRotate": true,
+
+  "autoRotateSpeed": 0.015,
+
+  "hotspots": [
+
+    {
+      "id": "hotspot1",
+
+      "title": "Mecanismo",
+
+      "description": "Sistema de poleas metálicas y cordón de nylon con larga vida útil.",
+
+      "position": "0.503m -0.027m 0m",
+
+      "target": "0.503m -0.027m 0m",
+
+      "orbit": "75.1deg 82.4deg 0.41m",
+
+      "fov": "8deg"
+    },
+
+    {
+      "id": "hotspot2",
+
+      "title": "Sistema Deslizante",
+
+      "description": "Personalizable para cierre derecho, izquierdo o central.",
+
+      "position": "-0.026m -0.06m 0.0012m",
+
+      "target": "-0.035m -0.035m 0.014m",
+
+      "orbit": "-49.2deg 111.4deg 0.84m",
+
+      "fov": "7deg"
+    }
+,
+{
+  "id": "hotspot3",
+
+  "title": "Fijación",
+
+  "description": "Fácil instalación a techo mediante tornillos y taquetes.",
+
+  "position": "-0.527m 0.03m 0m",
+
+  "target": "-0.525m -0.006m -0.011m",
+
+  "orbit": "-151.9deg 104.4deg 0.55m",
+
+  "fov": "7deg"
+},
+
+{
+  "id": "hotspot4",
+
+  "title": "Correderas",
+
+  "description": "Permiten instalar cortinas de forma sencilla.",
+
+  "position": "-0.378m -0.055m 0.032m",
+
+  "target": "-0.378m -0.046m 0.032m",
+
+  "orbit": "-29.9deg 54.4deg 0.52m",
+
+  "fov": "7deg"
+},
+
+{
+  "id": "hotspot5",
+
+  "title": "Recubrimiento",
+
+  "description": "Pintura electrostática brillante resistente a la corrosión.",
+
+  "position": "0.198m -0.001m 0.010m",
+
+  "target": "0.198m -0.001m 0.010m",
+
+  "orbit": "-31.5deg 53.2deg 0.44m",
+
+  "fov": "7deg"
+},
+
+{
+  "id": "hotspot6",
+
+  "title": "Materiales",
+
+  "description": "Compuesto principalmente por acero al carbon y algunos elementos de plastico antifricción.",
+
+  "position": "-0.540m -0.022m 0.014m",
+
+  "target": "-0.540m -0.022m 0.014m",
+
+  "orbit": "-64.6deg 111.1deg 0.3m",
+
+  "fov": "7deg"
+}
+
+  ]
+}

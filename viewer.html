@@ -415,8 +415,12 @@ const params =
   new URLSearchParams(window.location.search);
 
 const product =
-  params.get("product") || "cuadrado";
+  (
+    params.get("product") ||
+    "cuadrado"
+  ).toLowerCase();
 
+  
 const response =
   await fetch(`./config/${product}.json`);
     productData =

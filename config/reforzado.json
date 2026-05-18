@@ -1,15 +1,40 @@
 {
   "nombre": "Novacort Reforzado",
 
-  "modelo": "modelos/reforzado.glb",
+  "variants": {
+
+    "base": {
+
+      "label": "Solo cortinero",
+
+      "model": "modelos/reforzado.glb",
+
+      "cameraOrbit": "-35deg 75deg 2.4m",
+
+      "cameraTarget": "-0.193m -0.005m 0.006m",
+
+      "fov": "12deg"
+
+    },
+
+    "animado": {
+
+      "label": "Aplicación",
+
+      "model": "modelos/reforzado2.glb",
+
+      "cameraOrbit": "-35deg 75deg 6.2m",
+
+      "cameraTarget": "0m -0.8m 0m",
+
+      "fov": "60deg"
+
+    }
+
+  },
 
   "hdri": "hdri/studio3.hdr",
 
-  "cameraOrbit": "-50deg 67.4deg 1.85m",
-
-  "cameraTarget": "-0.234m -0.006m 0.001m",
-
-  "fov": "12deg",
   "autoRotate": true,
 
   "autoRotateSpeed": 0.015,
@@ -17,6 +42,7 @@
   "hotspots": [
 
     {
+
       "id": "hotspot1",
 
       "title": "Mecanismo",
@@ -30,9 +56,11 @@
       "orbit": "46.8deg 113.5deg 0.45m",
 
       "fov": "8deg"
+
     },
 
     {
+
       "id": "hotspot2",
 
       "title": "Sistema Deslizante",
@@ -46,88 +74,99 @@
       "orbit": "-49.2deg 111.4deg 0.84m",
 
       "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot3",
+
+      "title": "Fijación",
+
+      "description": "Fácil instalación a pared mediante tornillos y taquetes.",
+
+      "position": "-0.648m -0.009m -0.082m",
+
+      "target": "-0.648m -0.009m -0.082m",
+
+      "orbit": "-297.5deg 63.1deg 0.67m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot4",
+
+      "title": "Correderas",
+
+      "description": "Permiten instalar cortinas pesadas de forma sencilla.",
+
+      "position": "-0.486m -0.041m 0.001m",
+
+      "target": "-0.486m -0.041m 0.001m",
+
+      "orbit": "-29.9deg 54.4deg 0.52m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot5",
+
+      "title": "Recubrimiento",
+
+      "description": "Pintura electrostática brillante resistente a la corrosión.",
+
+      "position": "0.189m -0.001m -0.001m",
+
+      "target": "0.189m -0.001m -0.001m",
+
+      "orbit": "-135.4deg 54.8deg 0.43m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot6",
+
+      "title": "Materiales",
+
+      "description": "Compuesto principalmente por acero al carbono y algunos elementos de plástico antifricción.",
+
+      "position": "-0.661m -0.012m -0.001m",
+
+      "target": "-0.661m -0.012m -0.001m",
+
+      "orbit": "-55.6deg 78.4deg 0.3m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot7",
+
+      "title": "Fijación alternativa",
+
+      "description": "Fácil instalación a techo mediante tornillos y taquetes reemplazando los 2 soportes laterales por 2 soportes centrales.",
+
+      "position": "-0.071m 0.012m -0.003m",
+
+      "target": "-0.071m 0.012m -0.003m",
+
+      "orbit": "-41.3deg 65.8deg 0.40m",
+
+      "fov": "7deg"
+
     }
-,
-{
-  "id": "hotspot3",
-
-  "title": "Fijación",
-
-  "description": "Fácil instalación a pared mediante tornillos y taquetes.",
-
-  "position": "-0.648m -0.009m -0.082m",
-
-  "target": "-0.648m -.009m -0.082m",
-
-  "orbit": "-297.5deg 63.1deg 0.67m",
-
-  "fov": "7deg"
-},
-
-{
-  "id": "hotspot4",
-
-  "title": "Correderas",
-
-  "description": "Permiten instalar cortinas pesadas de forma sencilla.",
-
-  "position": "-0.486m -0.041m 0.001m",
-
-  "target": "-0.486m -0.041m 0.001m",
-
-  "orbit": "-29.9deg 54.4deg 0.52m",
-
-  "fov": "7deg"
-},
-
-{
-  "id": "hotspot5",
-
-  "title": "Recubrimiento",
-
-  "description": "Pintura electrostática brillante resistente a la corrosión.",
-
-  "position": "0.189m -0.001m -0.001m",
-
-  "target": "0.189m -0.001m -0.001m",
-
-  "orbit": "-135.4deg 54.8deg 0.43m",
-
-  "fov": "7deg"
-},
-
-{
-  "id": "hotspot6",
-
-  "title": "Materiales",
-
-  "description": "Compuesto principalmente por acero al carbon y algunos elementos de plastico antifricción.",
-
-  "position": "-0.661m -0.012m -0.001m",
-
-  "target": "-0.661m -0.012m -0.001m",
-
-  "orbit": "-55.6deg 78.4deg 0.3m",
-
-  "fov": "7deg"
-},
-
-{
-  "id": "hotspot7",
-
-  "title": "Fijación alternativa",
-
-  "description": "Fácil instalación a techo mediante tornillos y taquetes reemplazando los 2 soportes laterales por 2 soportes centrales.",
-
-  "position": "-0.071m 0.012m -0.003m",
-
-  "target": "-0.071m 0.012m -0.003m",
-
-  "orbit": "-41.3deg 65.8deg 0.40m",
-
-  "fov": "7deg"
-}
-
 
   ]
+
 }

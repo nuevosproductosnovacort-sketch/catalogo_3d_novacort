@@ -5,8 +5,9 @@
 
   <meta charset="UTF-8">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
   <title>Novacort</title>
 
@@ -21,9 +22,16 @@
        BASE
     ========================= */
 
+    * {
+
+      box-sizing: border-box;
+
+    }
+
     body {
 
       margin: 0;
+
       overflow: hidden;
 
       font-family: Arial, sans-serif;
@@ -40,6 +48,7 @@
     model-viewer {
 
       width: 100vw;
+
       height: 100dvh;
 
       background: transparent;
@@ -58,10 +67,13 @@
       top: 20px;
       left: 20px;
 
-      z-index: 10;
+      z-index: 100;
 
-      color: rgba(255,255,255,0.82);
+      color:
+      rgba(255,255,255,0.88);
+
       font-size: 24px;
+
       font-weight: bold;
 
       letter-spacing: 1px;
@@ -72,20 +84,109 @@
 
 
     /* =========================
-       HOTSPOTS
+       CONFIGURADOR
     ========================= */
 
-    .hotspot {
+    .configurator {
 
-      position: relative;
+      position: absolute;
+
+      top: 20px;
+      right: 20px;
+
+      z-index: 100;
+
+      display: flex;
+
+      gap: 10px;
+
+    }
+
+    .config-btn {
+
+      padding: 10px 16px;
 
       border: none;
 
-      background: transparent;
+      border-radius: 999px;
+
+      background:
+      rgba(255,255,255,0.08);
+
+      color: white;
 
       cursor: pointer;
 
+      font-size: 13px;
+
+      transition:
+      background 0.25s ease,
+      transform 0.25s ease;
+
+      backdrop-filter:
+      blur(10px);
+
     }
+
+    .config-btn:hover {
+
+      transform:
+      translateY(-2px);
+
+      background:
+      rgba(255,255,255,0.15);
+
+    }
+
+    .config-btn.active {
+
+      background: white;
+
+      color: black;
+
+    }
+
+
+    /* =========================
+       HOTSPOTS
+    ========================= */
+
+.hotspot {
+
+  position: relative;
+
+  display: block;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  z-index: 50;
+
+  opacity: 1;
+
+  visibility: visible;
+
+  transition:
+  opacity 0.25s ease,
+  transform 0.25s ease;
+
+}
+
+
+.hotspot-btn {
+
+  border: none;
+
+  background: transparent;
+
+  padding: 0;
+
+  cursor: pointer;
+
+}
 
 
     /* =========================
@@ -105,15 +206,17 @@
 
       border: 3px solid #111;
 
+      pointer-events: none;
+
       box-shadow:
-        0 0 18px rgba(255,255,255,0.75);
+      0 0 18px rgba(255,255,255,0.75);
 
       transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
 
       animation:
-        pulse 2s infinite;
+      pulse 2s infinite;
 
     }
 
@@ -127,19 +230,18 @@
 
       border-radius: 50%;
 
-      border: 2px solid rgba(255,255,255,0.25);
+      border:
+      2px solid rgba(255,255,255,0.25);
 
       animation:
-        ringPulse 2s infinite;
+      ringPulse 2s infinite;
 
     }
 
     .hotspot:hover .dot {
 
-      transform: scale(1.15);
-
-      box-shadow:
-        0 0 18px rgba(255,255,255,0.7);
+      transform:
+      scale(1.15);
 
     }
 
@@ -161,34 +263,35 @@
 
       border-radius: 18px;
 
-      background: rgba(20,20,20,0.78);
+      background:
+      rgba(20,20,20,0.78);
 
       color: white;
 
       opacity: 0;
 
       transform:
-        translateY(10px);
+      translateY(10px);
 
       transition:
-        opacity 0.25s ease,
-        transform 0.25s ease;
+      opacity 0.25s ease,
+      transform 0.25s ease;
 
       pointer-events: none;
 
       text-align: left;
 
-      backdrop-filter: blur(14px);
+      backdrop-filter:
+      blur(14px);
 
       box-shadow:
-        0 10px 30px rgba(0,0,0,0.35);
+      0 10px 30px rgba(0,0,0,0.35);
 
     }
 
     .tooltip h3 {
 
       margin-top: 0;
-
       margin-bottom: 8px;
 
       font-size: 16px;
@@ -205,219 +308,172 @@
 
     }
 
-
-    /* =========================
-       HOTSPOT ACTIVO
-    ========================= */
-
     .hotspot.active .tooltip {
 
       opacity: 1;
 
       transform:
-        translateY(0);
+      translateY(0);
 
     }
 
 
-/* =========================
-   DESKTOP CONTROLS
-========================= */
+    /* =========================
+       CONTROLES DESKTOP
+    ========================= */
 
-.desktop-controls {
+    .desktop-controls {
 
-  position: absolute;
+      position: absolute;
 
-  left: 20px;
-  bottom: 20px;
+      left: 20px;
+      bottom: 20px;
 
-  z-index: 20;
+      z-index: 100;
 
-  padding: 14px 16px;
+      padding: 14px 16px;
 
-  border-radius: 16px;
+      border-radius: 16px;
 
-  background:
-  rgba(20,20,20,0.72);
+      background:
+      rgba(20,20,20,0.72);
 
-  color:
-  rgba(255,255,255,0.82);
+      color:
+      rgba(255,255,255,0.82);
 
-  font-size: 12px;
+      font-size: 12px;
 
-  line-height: 1.7;
+      line-height: 1.7;
 
-  backdrop-filter:
-  blur(12px);
+      backdrop-filter:
+      blur(12px);
 
-  box-shadow:
-  0 8px 24px rgba(0,0,0,0.3);
+      box-shadow:
+      0 8px 24px rgba(0,0,0,0.3);
 
-  user-select: none;
+      pointer-events: none;
 
-  pointer-events: none;
+    }
 
-}
 
+    /* =========================
+       CONTROLES MOBILE
+    ========================= */
 
-/* =========================
-   MOBILE CONTROLS
-========================= */
+    .mobile-controls {
 
-.mobile-controls {
+      display: none;
 
-  display: none;
+    }
 
-}
 
+    /* =========================
+       MOBILE
+    ========================= */
 
+    @media (max-width: 768px) {
 
-@media (max-width: 768px) {
+      .titulo {
 
-.desktop-controls {
+        font-size: 18px;
 
-  display: none !important;
+        top: 14px;
+        left: 14px;
 
-}
+      }
 
-  .mobile-controls {
+      .configurator {
 
-  display: block !important;
+        top: 14px;
+        right: 14px;
 
-    position: absolute;
+        gap: 8px;
 
-    left: 12px;
-    bottom: 12px;
+      }
 
-    z-index: 20;
+      .config-btn {
 
-    padding: 8px 12px;
+        padding: 8px 12px;
 
-    border-radius: 12px;
+        font-size: 11px;
 
-    background:
-    rgba(20,20,20,0.82);
+      }
 
-    color: white;
+      .desktop-controls {
 
-    font-size: 10px;
+        display: none !important;
 
-    width: auto;
+      }
 
-    height: auto;
+      .mobile-controls {
 
-    max-width: fit-content;
+        display: block !important;
 
-    line-height: 1.2;
+        position: absolute;
 
-    box-shadow:
-    0 0px 10px rgba(255,255,255,0.35);
+        left: 12px;
+        bottom: 12px;
 
-    pointer-events: none;
+        z-index: 100;
 
-  }
+        padding: 8px 12px;
 
-  .titulo {
+        border-radius: 12px;
 
-    font-size: 18px;
+        background:
+        rgba(20,20,20,0.82);
 
-    top: 14px;
-    left: 14px;
+        color: white;
 
-  }
+        font-size: 10px;
 
-.dot {
+        line-height: 1.2;
 
-  width: 12px !important;
-  height: 12px !important;
+        box-shadow:
+        0 4px 12px rgba(0,0,0,0.2);
 
-  min-width: 12px;
-  min-height: 12px;
+        pointer-events: none;
 
-  border: 2px solid #111;
+      }
 
-  box-shadow:
-    0 0 8px rgba(255,255,255,0.45);
+      .dot {
 
-}
+        width: 12px !important;
 
-  .tooltip {
+        height: 12px !important;
 
-    width: 180px;
+        border: 2px solid #111;
 
-    left: 26px;
+        box-shadow:
+        0 0 8px rgba(255,255,255,0.45);
 
-    padding: 12px;
+      }
 
-  }
+      .tooltip {
 
-  .tooltip h3 {
+        width: 180px;
 
-    font-size: 14px;
+        left: 26px;
 
-  }
+        padding: 12px;
 
-  .tooltip p {
+      }
 
-    font-size: 12px;
+      .tooltip h3 {
 
-    line-height: 1.45;
+        font-size: 14px;
 
-  }
+      }
 
-}
+      .tooltip p {
 
+        font-size: 12px;
 
-.desktop-controls {
+        line-height: 1.45;
 
-  display: block;
+      }
 
-}
-
-.mobile-controls {
-
-  display: none;
-
-}
-
-.mobile-controls {
-
-  display: none;
-
-}
-
-  .dot {
-
-    width: 22px;
-    height: 22px;
-
-  }
-
-  .tooltip {
-
-    width: 180px;
-
-    left: 26px;
-
-    padding: 12px;
-
-  }
-
-  .tooltip h3 {
-
-    font-size: 14px;
-
-  }
-
-  .tooltip p {
-
-    font-size: 12px;
-
-    line-height: 1.45;
-
-  }
-
-
+    }
 
 
     /* =========================
@@ -478,34 +534,67 @@
 
 <body>
 
+
   <!-- =========================
        TITULO
   ========================= -->
 
   <div class="titulo">
+
     Novacort
+
   </div>
 
 
-<div class="desktop-controls">
+  <!-- =========================
+       CONFIGURADOR
+  ========================= -->
 
-  • Rotar: Click + arrastrar<br>
+  <div class="configurator">
 
-  • Zoom: Rueda del mouse<br>
+    <button
+      class="config-btn active"
+      data-variant="base">
 
-  • Mover: Click derecho + arrastrar
+      Solo cortinero
 
-</div>
+    </button>
 
+    <button
+      class="config-btn"
+      data-variant="animado">
 
-<div class="mobile-controls">
+      Aplicación
 
-  • Arrastra para rotar
+    </button>
 
-</div>
+  </div>
+
 
   <!-- =========================
-       MODEL VIEWER
+       CONTROLES
+  ========================= -->
+
+  <div class="desktop-controls">
+
+    • Rotar: Click + arrastrar<br>
+
+    • Zoom: Rueda del mouse<br>
+
+    • Mover: Click derecho + arrastrar
+
+  </div>
+
+
+  <div class="mobile-controls">
+
+    • Arrastra para rotar
+
+  </div>
+
+
+  <!-- =========================
+       VIEWER
   ========================= -->
 
   <model-viewer
@@ -524,7 +613,7 @@
 
     min-camera-orbit="auto auto 0.3m"
 
-    max-camera-orbit="auto auto 2m"
+    max-camera-orbit="auto auto 12m"
 
     shadow-intensity="2.5"
 
@@ -536,402 +625,512 @@
 
     environment-rotation="60deg"
 
-    camera-orbit="-50deg 67.4deg 1.82m"
-
-    camera-target="-0.133m -0.007m 0.015m"
-
-    field-of-view="12deg"
-
     tone-mapping="commerce"
 
-    ar
-
-  >
-
+    ar>
 
   </model-viewer>
 
 
-  <!-- =========================
-       SCRIPT
-  ========================= -->
+  <script>
 
-<script>
+    // =========================
+    // ELEMENTS
+    // =========================
 
-  // =========================
-  // VIEWER
-  // =========================
+    const viewer =
+      document.querySelector("#viewer");
 
-  const viewer = document.querySelector("#viewer");
-
-
-  // =========================
-  // VARIABLES
-  // =========================
-
-  let productData;
-
-  let isDragging = false;
-
-  let autoRotateInterval;
-
-  let inactivityTimer;
-
-  // =========================
-  // CARGAR PRODUCTO
-  // =========================
-
-  async function loadProduct() {
-
-const params =
-  new URLSearchParams(window.location.search);
-
-const product =
-  (
-    params.get("product") ||
-    "cuadrado"
-  ).toLowerCase();
+    const buttons =
+      document.querySelectorAll(".config-btn");
 
 
-const response =
-  await fetch(`./config/${product}.json`);
-    productData =
-      await response.json();
+    // =========================
+    // GLOBAL STATE
+    // =========================
 
-    setupViewer();
-setupMobileCamera();
-    createHotspots();
-setTimeout(() => {
+    let productData;
 
-  startAutoRotate();
+    let currentVariant = "base";
 
-}, 4000);
-  }
+    let autoRotateInterval;
+
+    let inactivityTimer;
+
+    let isDragging = false;
 
 
-  // =========================
-  // CONFIGURAR VIEWER
-  // =========================
+// =========================
+// LOAD PRODUCT
+// =========================
+async function loadProduct() {
 
-  function setupViewer() {
-
-    viewer.src =
-      productData.modelo;
-
-    viewer.setAttribute(
-      "environment-image",
-      productData.hdri
+  const params =
+    new URLSearchParams(
+      window.location.search
     );
 
-    viewer.cameraOrbit =
-      productData.cameraOrbit;
+  const product =
+    (
+      params.get("product") ||
+      "cuadrado"
+    ).toLowerCase();
 
-    viewer.cameraTarget =
-      productData.cameraTarget;
+  const response =
+    await fetch(
+      `./config/${product}.json`
+    );
 
-    viewer.fieldOfView =
-      productData.fov;
+  productData =
+    await response.json();
 
-  }
 
-  function setupMobileCamera() {
+  // CREATE HOTSPOTS ONLY ONCE
 
-  if (window.innerWidth <= 768) {
+  createHotspots();
 
-    viewer.cameraOrbit =
-      "-35deg 75deg 4m";
 
-    viewer.fieldOfView =
-      "60deg";
+  // INITIAL VARIANT
 
-  }
+  setVariant("base");
+
+
+  // CONFIGURATOR
+
+  setupConfigurator();
+
+
+  // AUTOROTATE
+
+  setTimeout(() => {
+
+    startAutoRotate();
+
+  }, 4000);
 
 }
 
+function createHotspots() {
 
-  // =========================
-  // CREAR HOTSPOTS
-  // =========================
+  productData.hotspots.forEach((hotspotData, index) => {
 
-  function createHotspots() {
+    const hotspot =
+      document.createElement("button");
 
-    productData.hotspots.forEach((hotspotData) => {
+    hotspot.className =
+      "hotspot";
 
-      const hotspot =
-        document.createElement("button");
 
-      hotspot.className = "hotspot";
+    // =========================
+    // UNIQUE SLOT
+    // =========================
 
-      hotspot.id = hotspotData.id;
+    hotspot.slot =
+      `hotspot-${index + 1}`;
 
-hotspot.slot = `hotspot-${hotspotData.id.replace("hotspot", "")}`;
-      hotspot.setAttribute(
-        "data-position",
-        hotspotData.position
-      );
 
-      hotspot.setAttribute(
-        "data-normal",
-        "0m 0m 0m"
-      );
+    // =========================
+    // POSITION
+    // =========================
 
-      hotspot.innerHTML = `
+    hotspot.setAttribute(
+      "data-position",
+      hotspotData.position
+    );
 
-        <div class="dot"></div>
+    hotspot.setAttribute(
+      "data-normal",
+      "0m 0m 1m"
+    );
 
-        <div class="tooltip">
 
-          <h3>${hotspotData.title}</h3>
+    // =========================
+    // CONTENT
+    // =========================
 
-          <p>${hotspotData.description}</p>
+    hotspot.innerHTML = `
 
-        </div>
+      <div class="dot"></div>
 
-      `;
+      <div class="tooltip">
 
-      viewer.appendChild(hotspot);
+        <h3>${hotspotData.title}</h3>
 
+        <p>${hotspotData.description}</p>
 
-      // =========================
-      // EVENTO CLICK
-      // =========================
+      </div>
 
-      hotspot.addEventListener("click", (event) => {
+    `;
 
-        event.stopPropagation();
 
-        activateHotspot(hotspot);
+    // =========================
+    // CLICK
+    // =========================
 
-        viewer.cameraTarget =
-          hotspotData.target;
+hotspot.addEventListener("click", (event) => {
 
-        viewer.cameraOrbit =
-          hotspotData.orbit;
+  event.stopPropagation();
 
-        viewer.fieldOfView =
-          hotspotData.fov;
+  activateHotspot(hotspot);
 
-      });
+  viewer.cameraTarget =
+    hotspotData.target;
 
-    });
+  viewer.cameraOrbit =
+    hotspotData.orbit;
 
-  }
+  viewer.fieldOfView =
+    hotspotData.fov;
 
-
-  // =========================
-  // ACTIVAR HOTSPOT
-  // =========================
-
-  function activateHotspot(activeHotspot) {
-
-    document
-      .querySelectorAll(".hotspot")
-      .forEach((hotspot) => {
-
-        hotspot.classList.remove("active");
-
-      });
-
-    activeHotspot.classList.add("active");
-
-  }
-
-
-  // =========================
-  // RESET CAMARA
-  // =========================
-
-function resetCamera() {
-
-  // =========================
-  // MOBILE
-  // =========================
-
-  if (window.innerWidth <= 768) {
-
-    viewer.cameraOrbit =
-      "-35deg 75deg 3.5m";
-
-    viewer.cameraTarget =
-      productData.cameraTarget;
-
-    viewer.fieldOfView =
-      "60deg";
-
-  }
-
-  // =========================
-  // DESKTOP
-  // =========================
-
-  else {
-
-    viewer.cameraOrbit =
-      productData.cameraOrbit;
-
-    viewer.cameraTarget =
-      productData.cameraTarget;
-
-    viewer.fieldOfView =
-      productData.fov;
-
-  }
-
-  // =========================
-  // RESET HOTSPOTS
-  // =========================
-
-  document
-    .querySelectorAll(".hotspot")
-    .forEach((hotspot) => {
-
-      hotspot.classList.remove("active");
-
-    });
-
-}
-
-
-function startAutoRotate() {
-
-  if (!productData.autoRotate)
-    return;
-
-  stopAutoRotate();
-
-  // =========================
-  // VELOCIDAD RESPONSIVE
-  // =========================
-
-  const rotateSpeed =
-
-    window.innerWidth <= 768
-
-      ? productData.autoRotateSpeed * 0.45
-
-      : productData.autoRotateSpeed;
-
-
-  autoRotateInterval = setInterval(() => {
-
-    const orbit =
-      viewer.getCameraOrbit();
-
-    const theta =
-      orbit.theta +
-      (
-        rotateSpeed *
-        Math.PI / 180
-      );
-
-    viewer.cameraOrbit =
-      `${theta}rad ${orbit.phi}rad ${orbit.radius}m`;
-
-    viewer.jumpCameraToGoal();
-
-  }, 16);
-
-}
-
-
-function stopAutoRotate() {
-
-  if (autoRotateInterval) {
-
-    clearInterval(autoRotateInterval);
-
-    autoRotateInterval = null;
-
-  }
-
-}
-
-  // =========================
-  // DRAG
-  // =========================
-
-  viewer.addEventListener("pointerdown", () => {
-
-    isDragging = false;
-    stopAutoRotate();
-
-clearTimeout(inactivityTimer);
-
-  });
-
-  viewer.addEventListener("pointermove", () => {
-
-    isDragging = true;
-    clearTimeout(inactivityTimer);
-
-inactivityTimer = setTimeout(() => {
-
-  startAutoRotate();
-
-}, 6000);
-
-  });
-
-
-  // =========================
-  // RESET CLICK VACIO
-  // =========================
-
-viewer.addEventListener("pointerup", (event) => {
-
-  const hotspot =
-    event.target.closest(".hotspot");
-
-  if (!isDragging && !hotspot) {
-
-    resetCamera();
-
-  }
 
 });
 
 
+    // =========================
+    // APPEND
+    // =========================
+
+    viewer.appendChild(hotspot);
+
+  });
+
+}
+
+
+    // =========================
+    // SET VARIANT
+    // =========================
+
+function setVariant(variant) {
+
+  currentVariant =
+    variant;
+
+  const variantData =
+    productData
+    .variants[variant];
+
+
   // =========================
-  // DEBUG CAMARA
+  // BUTTONS
   // =========================
 
-  function radToDeg(rad) {
+  buttons.forEach((btn) => {
 
-    return (
-      rad * 180 / Math.PI
-    ).toFixed(1);
+    btn.classList.remove("active");
 
-  }
+  });
 
-  viewer.addEventListener("camera-change", () => {
+  document
+    .querySelector(
+      `[data-variant="${variant}"]`
+    )
+    .classList
+    .add("active");
 
-    const orbit =
-      viewer.getCameraOrbit();
 
-    const target =
-      viewer.getCameraTarget();
+  // =========================
+  // MODEL
+  // =========================
 
-    console.clear();
+  viewer.src =
+    variantData.model;
 
-    console.log(`
+
+  // =========================
+  // MODEL READY
+  // =========================
+
+  viewer.addEventListener("load", () => {
+
+    applyCamera(variantData);
+
+    updateHotspotsVisibility();
+
+    resetHotspots();
+
+    viewer.play();
+
+  }, { once: true });
+
+}
+
+    // =========================
+    // APPLY CAMERA
+    // =========================
+
+    function applyCamera(variantData) {
+
+      viewer.cameraOrbit =
+        variantData.cameraOrbit;
+
+      viewer.cameraTarget =
+        variantData.cameraTarget;
+
+      viewer.fieldOfView =
+        variantData.fov;
+
+    }
+
+
+    // =========================
+    // CONFIGURATOR
+    // =========================
+
+    function setupConfigurator() {
+
+      buttons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+          const variant =
+            button.dataset.variant;
+
+          stopAutoRotate();
+
+          clearTimeout(inactivityTimer);
+
+          setVariant(variant);
+
+        });
+
+      });
+
+    }
+
+
+    // =========================
+    // HOTSPOTS VISIBILITY
+    // =========================
+
+    function updateHotspotsVisibility() {
+
+      const hotspots =
+        document.querySelectorAll(".hotspot");
+
+      const hideHotspots =
+        currentVariant === "animado";
+
+      hotspots.forEach((hotspot) => {
+
+        hotspot.style.opacity =
+          hideHotspots ? "0" : "1";
+
+        hotspot.style.visibility =
+          hideHotspots ? "hidden" : "visible";
+
+        hotspot.style.pointerEvents =
+          hideHotspots ? "none" : "auto";
+
+        hotspot.style.transform =
+          hideHotspots
+            ? "scale(0.8)"
+            : "scale(1)";
+
+      });
+
+    }
+
+
+    // =========================
+    // HOTSPOTS ACTIVE
+    // =========================
+
+    function activateHotspot(activeHotspot) {
+
+      document
+        .querySelectorAll(".hotspot")
+        .forEach((hotspot) => {
+
+          hotspot.classList.remove("active");
+
+        });
+
+      activeHotspot.classList.add("active");
+
+    }
+
+
+    // =========================
+    // RESET HOTSPOTS
+    // =========================
+
+    function resetHotspots() {
+
+      document
+        .querySelectorAll(".hotspot")
+        .forEach((hotspot) => {
+
+          hotspot.classList.remove("active");
+
+        });
+
+    }
+
+
+    // =========================
+    // RESET CAMERA
+    // =========================
+
+function resetCamera() {
+
+  const variantData =
+    productData
+    .variants[currentVariant];
+
+  applyCamera(variantData);
+
+  resetHotspots();
+
+
+}
+
+    // =========================
+    // AUTOROTATE
+    // =========================
+
+    function startAutoRotate() {
+
+      if (!productData.autoRotate)
+        return;
+
+      stopAutoRotate();
+
+      const rotateSpeed =
+
+        window.innerWidth <= 768
+
+          ? productData.autoRotateSpeed * 0.45
+
+          : productData.autoRotateSpeed;
+
+      autoRotateInterval =
+        setInterval(() => {
+
+          const orbit =
+            viewer.getCameraOrbit();
+
+          const theta =
+            orbit.theta +
+            (
+              rotateSpeed *
+              Math.PI / 180
+            );
+
+          viewer.cameraOrbit =
+            `${theta}rad ${orbit.phi}rad ${orbit.radius}m`;
+
+
+        }, 16);
+
+    }
+
+
+    // =========================
+    // STOP AUTOROTATE
+    // =========================
+
+    function stopAutoRotate() {
+
+      if (autoRotateInterval) {
+
+        clearInterval(autoRotateInterval);
+
+        autoRotateInterval = null;
+
+      }
+
+    }
+
+
+    // =========================
+    // INTERACTION
+    // =========================
+
+    viewer.addEventListener("pointerdown", () => {
+
+      isDragging = false;
+
+      stopAutoRotate();
+
+      clearTimeout(inactivityTimer);
+
+    });
+
+
+    viewer.addEventListener("pointermove", () => {
+
+      isDragging = true;
+
+      clearTimeout(inactivityTimer);
+
+      inactivityTimer = setTimeout(() => {
+
+        startAutoRotate();
+
+      }, 6000);
+
+    });
+
+
+    // =========================
+    // EMPTY CLICK RESET
+    // =========================
+
+    viewer.addEventListener("pointerup", (event) => {
+
+      const hotspot =
+        event.target.closest(".hotspot");
+
+      if (!isDragging && !hotspot) {
+
+        resetCamera();
+
+      }
+
+    });
+
+
+    // =========================
+    // DEBUG CAMERA
+    // =========================
+
+    function radToDeg(rad) {
+
+      return (
+        rad * 180 / Math.PI
+      ).toFixed(1);
+
+    }
+
+    viewer.addEventListener("camera-change", () => {
+
+      const orbit =
+        viewer.getCameraOrbit();
+
+      const target =
+        viewer.getCameraTarget();
+
+      console.clear();
+
+      console.log(`
 
 camera-orbit="${radToDeg(orbit.theta)}deg ${radToDeg(orbit.phi)}deg ${orbit.radius.toFixed(2)}m"
 
 camera-target="${target.x.toFixed(3)}m ${target.y.toFixed(3)}m ${target.z.toFixed(3)}m"
 
-    `);
+      `);
 
-  });
-
-
-  // =========================
-  // INICIAR
-  // =========================
-
-loadProduct();
+    });
 
 
-</script>
+    // =========================
+    // INIT
+    // =========================
+
+    loadProduct();
+
+  </script>
 
 </body>
 

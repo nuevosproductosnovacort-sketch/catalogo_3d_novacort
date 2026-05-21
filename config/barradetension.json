@@ -1,0 +1,144 @@
+{
+  "nombre": "Novacort Barra de tension",
+
+  "variants": {
+
+    "base": {
+
+      "label": "Solo cortinero",
+
+      "model": "modelos/barradetension.glb",
+
+      "cameraOrbit": "-34.9deg 64.4deg 1.7m",
+
+      "cameraTarget": "-0.073m 0.003 0.007m",
+
+      "fov": "12deg"
+
+    },
+
+    "animado": {
+
+      "label": "Aplicación",
+
+      "model": "modelos/barradetension2.glb",
+
+      "cameraOrbit": "-35deg 75deg 6.2m",
+
+      "cameraTarget": "0m -0.8m 0m",
+
+      "fov": "60deg"
+
+    }
+
+  },
+  
+"materials": [
+
+  "blanco",
+  "cromo"
+
+],
+
+  "hdri": "hdri/studio3.hdr",
+
+  "autoRotate": false,
+
+  "autoRotateSpeed": 0.015,
+
+  "hotspots": [
+
+    {
+
+      "id": "hotspot1",
+
+      "title": "Mecanismo",
+
+      "description": "Sistema de resorte que permite ajustar el tamaño y la tension para mantener la barra en el lugar deseado.",
+
+      "position": "0.181m -0.013m 0.001m",
+
+      "target": "0.181m -0.013m 0.001m",
+
+      "orbit": "-36.0deg 56.5deg 0.36m",
+
+      "fov": "8deg"
+
+    },
+
+
+    {
+
+      "id": "hotspot2",
+
+      "title": "Fijación",
+
+      "description": "Sistema de instalación sin tornillos mediante tension en mecanismo de resorte y friccion en regatones.",
+
+      "position": "0.422m 0.008m -0.004m",
+
+      "target": "0.422m 0.008m -0.004m",
+
+      "orbit": "134.7deg 42.8deg 0.30m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot3",
+
+      "title": "Sistema telescopico",
+
+      "description": "Permite ajustar la longitud de la barra de forma sencilla, girando el tubo a la longitud deseada.",
+
+      "position": "-0.151m 0.004m 0.005m",
+
+      "target": "-0.151m 0.004m 0.005m",
+
+      "orbit": "-51.4deg 55.3deg 0.30m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot4",
+
+      "title": "Recubrimiento",
+
+      "description": "Cromo o pintura electrostática brillante en diferentes colores, resistentes a la corrosión.",
+
+      "position": "-0.014m -0.003m 0.008m",
+
+      "target": "-0.014m -0.003m 0.008m",
+
+      "orbit": "-45.1deg 61.3deg 0.37m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot5",
+
+      "title": "Materiales",
+
+      "description": "Compuesto principalmente por acero al carbono y algunos elementos de plástico de uso rudo.",
+
+      "position": "-0.289m 0.001m 0.006m",
+
+      "target": "-0.289m 0.001m 0.006mm",
+
+      "orbit": "-55.4deg 67.2deg 0.86m",
+
+      "fov": "7deg"
+
+    }
+
+  ]
+
+}

@@ -51,27 +51,27 @@
 
     }
 
-    .titulo {
+.titulo {
 
-      position: absolute;
+  position: absolute;
 
-      top: 20px;
-      left: 20px;
+  top: 18px;
+  left: 18px;
 
-      z-index: 100;
+  z-index: 100;
 
-      color:
-      rgba(255,255,255,0.88);
+  color:
+  rgba(255,255,255,0.92);
 
-      font-size: 24px;
+  font-size: 22px;
 
-      font-weight: bold;
+  font-weight: 700;
 
-      letter-spacing: 1px;
+  letter-spacing: 1px;
 
-      pointer-events: none;
+  pointer-events: none;
 
-    }
+}
 
     .instructions {
 
@@ -111,8 +111,8 @@
 
   position: absolute;
 
-  top: 20px;
-  right: 20px;
+  top: 18px;
+  right: 18px;
 
   z-index: 100;
 
@@ -120,15 +120,15 @@
 
   flex-direction: column;
 
-  gap: 12px;
+  gap: 8px;
 
 }
 
 .config-btn {
 
-  width: 160px;
+  width: 118px;
 
-  padding: 12px 18px;
+  padding: 9px 12px;
 
   border: none;
 
@@ -185,19 +185,78 @@
 
   flex-direction: column;
 
-  align-items: flex-start;
+  gap: 12px;
+
+  padding: 12px;
+
+  border-radius: 24px;
+
+  background:
+  rgba(0,0,0,0.28);
+
+  backdrop-filter:
+  blur(14px);
+
+}
+
+.material-toggle {
+
+  border: none;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  color: white;
+
+  border-radius: 999px;
+
+  padding:
+  10px 16px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+}
+
+.material-content {
+
+  display: flex;
+
+  flex-direction: column;
 
   gap: 12px;
 
-  padding: 14px;
+  overflow: hidden;
 
-  border-radius: 18px;
+  transition:
+  max-height 0.3s ease,
+  opacity 0.3s ease;
 
-  background:
-  rgba(0,0,0,0.25);
+  max-height: 300px;
 
-  backdrop-filter:
-  blur(12px);
+  opacity: 1;
+
+}
+
+.material-picker.collapsed
+.material-content {
+
+  max-height: 0;
+
+  opacity: 0;
+
+}
+
+#materialButtons {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  align-items: center;
 
 }
 
@@ -419,6 +478,196 @@
 
     }
 
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .titulo {
+
+    font-size: 18px;
+
+    top: 14px;
+    left: 14px;
+
+  }
+
+
+  .instructions {
+
+    bottom: 14px;
+    left: 14px;
+
+    font-size: 11px;
+
+    padding: 10px 12px;
+
+    max-width: 170px;
+
+    border-radius: 16px;
+
+    line-height: 1.4;
+
+    background:
+    rgba(0,0,0,0.18);
+
+    opacity: 0.8;
+
+  }
+
+
+  .configurator {
+
+    top: 18px;
+
+    right: 18px;
+
+    gap: 6px;
+
+  }
+
+
+.config-btn {
+
+  width: 96px;
+
+  padding: 8px 10px;
+
+  font-size: 11px;
+
+  border-radius: 999px;
+
+}
+
+
+  .material-picker {
+
+    bottom: 95px;
+
+    right: 14px;
+
+    padding: 0;
+
+    background: transparent;
+
+    backdrop-filter: none;
+
+  }
+
+
+.material-toggle {
+
+  width: 46px;
+  height: 46px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  background:
+  rgba(0,0,0,0.45);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 20px;
+
+  backdrop-filter:
+  blur(12px);
+
+  box-shadow:
+  0 0 20px rgba(0,0,0,0.25);
+
+}
+
+
+  .material-content {
+
+    position: absolute;
+
+    bottom: 60px;
+    right: 0;
+
+    flex-direction: row;
+
+    background:
+    rgba(0,0,0,0.28);
+
+    backdrop-filter:
+    blur(14px);
+
+    padding: 10px;
+
+    border-radius: 999px;
+
+    gap: 10px;
+
+  }
+
+
+  .material-picker.collapsed
+  .material-content {
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+    translateY(10px);
+
+  }
+
+
+  .material-picker:not(.collapsed)
+  .material-content {
+
+    opacity: 1;
+
+    transform:
+    translateY(0);
+
+    transition:
+    0.25s ease;
+
+  }
+
+
+  .material-swatch {
+
+    width: 30px;
+    height: 30px;
+
+  }
+
+
+  .tooltip {
+
+    width: 170px;
+
+    left: -180px;
+
+    top: -6px;
+
+    font-size: 11px;
+
+    padding: 12px;
+
+  }
+
+
+}
+
+
   </style>
 
 </head>
@@ -455,7 +704,7 @@
       class="config-btn active"
       data-variant="base">
 
-      Solo cortinero
+      Producto
 
     </button>
 
@@ -470,17 +719,23 @@
   </div>
 
 
-  <div class="material-picker">
+<div class="material-picker collapsed">
 
-    <div class="material-title">
+  <button
+    class="material-toggle"
+    onclick="toggleMaterials()">
 
-      Color
+    🎨
 
-    </div>
+  </button>
+
+  <div class="material-content">
 
     <div id="materialButtons"></div>
 
   </div>
+
+</div>
 
 
   <model-viewer
@@ -641,59 +896,172 @@
     }
 
 
-    function setVariant(variant) {
+function setVariant(variant) {
 
-      currentVariant =
-        variant;
+  currentVariant =
+    variant;
 
-      const variantData =
-        productData
-        .variants[variant];
+  const variantData =
+    productData
+    .variants[variant];
 
-      buttons.forEach((btn) => {
+  const isMobile =
+    window.innerWidth <= 768;
 
-        btn.classList.remove("active");
 
-      });
+  // =========================
+  // BUTTONS
+  // =========================
 
-      document
-        .querySelector(
-          `[data-variant="${variant}"]`
-        )
-        ?.classList
-        .add("active");
+  buttons.forEach((btn) => {
 
-      viewer.src =
-        variantData.model;
+    btn.classList.remove("active");
 
-      viewer.addEventListener("load", () => {
+  });
 
-        applyCamera(variantData);
+  document
+    .querySelector(
+      `[data-variant="${variant}"]`
+    )
+    ?.classList
+    .add("active");
 
-        updateHotspotsVisibility();
 
-        resetHotspots();
+  // =========================
+  // MODEL
+  // =========================
 
-        viewer.play();
+  viewer.src =
+    variantData.model;
 
-      }, { once: true });
+
+  // =========================
+  // MODEL READY
+  // =========================
+
+  viewer.addEventListener("load", () => {
+
+
+    // =========================
+    // MOBILE CAMERA
+    // =========================
+
+    if (
+      isMobile &&
+      variantData.mobileCameraOrbit
+    ) {
+
+      viewer.cameraOrbit =
+        variantData.mobileCameraOrbit;
 
     }
 
-
-    function applyCamera(variantData) {
+    else {
 
       viewer.cameraOrbit =
         variantData.cameraOrbit;
 
-      viewer.cameraTarget =
-        variantData.cameraTarget;
+    }
 
-      viewer.fieldOfView =
-        variantData.fov;
+
+    // =========================
+    // TARGET
+    // =========================
+
+    if (
+      isMobile &&
+      variantData.mobileCameraTarget
+    ) {
+
+      viewer.cameraTarget =
+        variantData.mobileCameraTarget;
 
     }
 
+    else {
+
+      viewer.cameraTarget =
+        variantData.cameraTarget;
+
+    }
+
+
+    // =========================
+    // FOV
+    // =========================
+
+    viewer.fieldOfView =
+      variantData.fov;
+
+
+    updateHotspotsVisibility();
+
+    resetHotspots();
+
+    viewer.play();
+
+  }, { once: true });
+
+}
+
+function applyCamera(variantData) {
+
+  const isMobile =
+    window.innerWidth <= 768;
+
+
+  // =========================
+  // CAMERA ORBIT
+  // =========================
+
+  if (
+    isMobile &&
+    variantData.mobileCameraOrbit
+  ) {
+
+    viewer.cameraOrbit =
+      variantData.mobileCameraOrbit;
+
+  }
+
+  else {
+
+    viewer.cameraOrbit =
+      variantData.cameraOrbit;
+
+  }
+
+
+  // =========================
+  // CAMERA TARGET
+  // =========================
+
+  if (
+    isMobile &&
+    variantData.mobileCameraTarget
+  ) {
+
+    viewer.cameraTarget =
+      variantData.mobileCameraTarget;
+
+  }
+
+  else {
+
+    viewer.cameraTarget =
+      variantData.cameraTarget;
+
+  }
+
+
+  // =========================
+  // FOV
+  // =========================
+
+  viewer.fieldOfView =
+    variantData.fov;
+
+}
 
     function setupConfigurator() {
 
@@ -730,23 +1098,6 @@ function setupMaterials() {
     return;
 
 
-  const colors = {
-
-    Blanco:
-      "#f5f5f5",
-
-    Negro:
-      "#1a1a1a",
-
-    Beige:
-      "#c9b39a",
-
-    Cromo:
-      "linear-gradient(135deg,#f5f5f5,#8a8a8a,#ffffff,#6d6d6d)"
-
-  };
-
-
   productData.materials.forEach(
     (material, index) => {
 
@@ -759,10 +1110,10 @@ function setupMaterials() {
         "material-swatch";
 
       button.dataset.material =
-        material;
+        material.name;
 
       button.title =
-        material;
+        material.name;
 
 
       if (index === 0) {
@@ -774,24 +1125,26 @@ function setupMaterials() {
       }
 
 
-      if (material === "Cromo") {
+      if (material.gradient) {
 
         button.style.background =
-          colors[material];
+          material.gradient;
 
       }
 
       else {
 
-        button.style.backgroundColor =
-          colors[material];
+        button.style.background =
+          material.color;
 
       }
 
 
       button.onclick = () => {
 
-        setMaterial(material);
+        setMaterial(
+          material.name
+        );
 
       };
 
@@ -804,6 +1157,7 @@ function setupMaterials() {
   );
 
 }
+
 
 
 window.setMaterial = function(name) {
@@ -830,6 +1184,18 @@ window.setMaterial = function(name) {
       }
 
     });
+
+}
+
+
+function toggleMaterials() {
+
+  document
+    .querySelector(
+      ".material-picker"
+    )
+    .classList
+    .toggle("collapsed");
 
 }
 

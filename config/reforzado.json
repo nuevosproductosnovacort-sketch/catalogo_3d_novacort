@@ -10,6 +10,7 @@
       "model": "modelos/reforzado.glb",
 
       "cameraOrbit": "-35deg 75deg 2.4m",
+      "mobileCameraOrbit": "-35deg 75deg 5.2m",
 
       "cameraTarget": "-0.193m -0.005m 0.006m",
 

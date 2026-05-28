@@ -10,6 +10,9 @@
       "model": "modelos/cuadrado.glb",
 
       "cameraOrbit": "-35deg 75deg 2.2m",
+           
+      "mobileCameraOrbit": "-35deg 75deg 5.5m",
+
 
       "cameraTarget": "-0.095m -0.014m 0.013m",
 
@@ -47,7 +50,7 @@
 
       "title": "Mecanismo",
 
-      "description": "Sistema de poleas metálicas y cordón de nylon con larga vida útil.",
+      "description": "Sistema de poleas plasticas y cordón de nylon con larga vida útil.",
 
       "position": "0.503m -0.027m 0m",
 

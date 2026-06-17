@@ -124,6 +124,19 @@
 
 }
 
+.finial-picker {
+
+  position: absolute;
+
+  top: 100px;
+
+  right: 18px;
+
+  width: 118px;
+
+  z-index: 10;
+
+}
 .config-btn {
 
   width: 118px;
@@ -176,7 +189,7 @@
 
   position: absolute;
 
-  bottom: 20px;
+  bottom: 60px;
   right: 20px;
 
   z-index: 100;
@@ -479,6 +492,154 @@
     }
 
 /* =========================
+   FINIAL MODAL
+========================= */
+
+.finial-modal {
+
+  position: fixed;
+
+  inset: 0;
+
+  background:
+  rgba(0,0,0,0.65);
+
+  backdrop-filter:
+  blur(6px);
+
+  display: none;
+
+  align-items: center;
+
+  justify-content: center;
+
+  z-index: 9999;
+
+}
+
+.finial-modal.open {
+
+  display: flex;
+
+}
+
+.finial-modal-content {
+
+  width: fit-content;
+
+  min-width: 180px;
+
+  max-height: 80vh;
+
+  overflow-y: auto;
+
+  padding: 20px;
+
+  border-radius: 24px;
+
+  background:
+  rgba(25,25,25,0.95);
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+}
+
+.finial-modal-title {
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  margin-bottom: 16px;
+
+  text-align: center;
+
+}
+
+.finial-modal-btn {
+
+  width: auto;
+
+  min-width: 120px;
+
+  display: block;
+
+  margin: 0 auto 10px auto;
+
+  margin-bottom: 10px;
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 999px;
+
+  background:
+  rgba(255,255,255,0.12);
+
+  color: white;
+
+  cursor: pointer;
+
+}
+
+.finial-modal-btn.active {
+
+  border:
+  2px solid white;
+
+  background:
+  rgba(255,255,255,0.28);
+
+}    
+
+.finial-toggle {
+
+  width: 118px;
+
+  padding: 9px 12px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 13px;
+
+  transition:
+  background 0.25s ease,
+  transform 0.25s ease;
+
+  backdrop-filter:
+  blur(10px);
+
+  text-align: center;
+
+}
+
+.finial-toggle:hover {
+
+  transform:
+  translateY(-2px);
+
+  background:
+  rgba(255,255,255,0.15);
+
+}
+
+/* =========================
    MOBILE
 ========================= */
 
@@ -664,6 +825,45 @@
 
   }
 
+  .finial-picker {
+
+  position: absolute;
+
+  top: 85px;
+
+  right: 18px;
+
+  width: 96px;
+
+  z-index: 100;
+
+}
+
+.finial-toggle {
+
+  width: 96px;
+
+  padding: 8px 10px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 11px;
+
+  backdrop-filter:
+  blur(10px);
+
+}
+
+
 
 }
 
@@ -698,25 +898,40 @@
 </div>
 
 
-  <div class="configurator">
+<div class="configurator">
 
-    <button
-      class="config-btn active"
-      data-variant="base">
+  <button
+    class="config-btn active"
+    data-variant="base">
 
-      Producto
+    Producto
 
-    </button>
+  </button>
 
-    <button
-      class="config-btn"
-      data-variant="animado">
+  <button
+    class="config-btn"
+    data-variant="animado">
 
-      Aplicación
+    Aplicación
 
-    </button>
+  </button>
 
-  </div>
+</div>
+
+
+<div
+  id="finialContainer"
+  class="finial-picker collapsed"
+  style="display:none;">
+
+  <button
+    id="finialToggle"
+    class="finial-toggle">
+
+    Modelo
+
+  </button>
+</div>
 
 
 <div class="material-picker collapsed">
@@ -792,6 +1007,21 @@
     let isDragging = false;
 
 
+    const finialContainer =
+      document.getElementById(
+        "finialContainer"
+      );
+
+const finialToggle =
+  document.getElementById(
+    "finialToggle"
+  );
+
+let currentFinial = null;
+
+
+
+
     async function loadProduct() {
 
       const params =
@@ -812,6 +1042,44 @@
 
       productData =
         await response.json();
+
+        // =========================
+// FINIALS
+// =========================
+
+if (
+  productData.finials &&
+  Object.keys(
+    productData.finials
+  ).length
+) {
+
+  finialContainer.style.display =
+    "flex";
+
+
+
+  currentFinial =
+    Object.keys(
+      productData.finials
+    )[0];
+
+finialToggle.textContent =
+  productData.finials[
+    currentFinial
+  ].label + " ▼";
+
+  populateFinials();
+
+
+}
+
+else {
+
+  finialContainer.style.display =
+    "none";
+
+}
 
       createHotspots();
 
@@ -927,12 +1195,29 @@ function setVariant(variant) {
     .add("active");
 
 
-  // =========================
-  // MODEL
-  // =========================
+// =========================
+// MODEL
+// =========================
 
-  viewer.src =
-    variantData.model;
+let modelToLoad =
+  variantData.model;
+
+
+if (
+  currentFinial &&
+  productData.finials
+) {
+
+  modelToLoad =
+    productData.finials[
+      currentFinial
+    ].model;
+
+}
+
+
+viewer.src =
+  modelToLoad;
 
 
   // =========================
@@ -993,6 +1278,21 @@ function setVariant(variant) {
     viewer.fieldOfView =
       variantData.fov;
 
+      if (viewer.availableVariants?.length) {
+
+  const activeMaterial =
+    document.querySelector(
+      ".material-swatch.active"
+    );
+
+  if (activeMaterial) {
+
+    viewer.variantName =
+      activeMaterial.dataset.material;
+
+  }
+
+}
 
     updateHotspotsVisibility();
 
@@ -1063,26 +1363,26 @@ function applyCamera(variantData) {
 
 }
 
-    function setupConfigurator() {
+function setupConfigurator() {
 
-      buttons.forEach((button) => {
+  buttons.forEach((button) => {
 
-        button.addEventListener("click", () => {
+    button.addEventListener("click", () => {
 
-          const variant =
-            button.dataset.variant;
+      const variant =
+        button.dataset.variant;
 
-          stopAutoRotate();
+      stopAutoRotate();
 
-          clearTimeout(inactivityTimer);
+      clearTimeout(inactivityTimer);
 
-          setVariant(variant);
+      setVariant(variant);
 
-        });
+    });
 
-      });
+  });
 
-    }
+}
 
 
 function setupMaterials() {
@@ -1196,6 +1496,100 @@ function toggleMaterials() {
     )
     .classList
     .toggle("collapsed");
+
+}
+
+function openFinialModal() {
+
+  const finialModal =
+    document.getElementById(
+      "finialModal"
+    );
+
+  const finialModalList =
+    document.getElementById(
+      "finialModalList"
+    );
+
+  if (
+    !finialModal ||
+    !finialModalList
+  ) return;
+
+
+  finialModalList.innerHTML = "";
+
+
+  Object.entries(
+    productData.finials
+  ).forEach(([key, data]) => {
+
+    const button =
+      document.createElement(
+        "button"
+      );
+
+    button.className =
+      "finial-modal-btn";
+
+    if (
+      currentFinial === key
+    ) {
+
+      button.classList.add(
+        "active"
+      );
+
+    }
+
+    button.textContent =
+      data.label;
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        currentFinial =
+          key;
+
+        finialToggle.textContent =
+        data.label + " ▼";
+
+        setVariant(
+          currentVariant
+        );
+
+        closeFinialModal();
+
+      }
+    );
+
+    finialModalList.appendChild(
+      button
+    );
+
+  });
+
+
+  finialModal.classList.add(
+    "open"
+  );
+
+}
+
+function closeFinialModal() {
+
+  const finialModal =
+    document.getElementById(
+      "finialModal"
+    );
+
+  if (!finialModal)
+    return;
+
+  finialModal.classList.remove(
+    "open"
+  );
 
 }
 
@@ -1319,6 +1713,68 @@ function toggleMaterials() {
 
     }
 
+function populateFinials() {
+
+  const finialModalList =
+    document.getElementById(
+      "finialModalList"
+    );
+
+  finialModalList.innerHTML = "";
+
+  Object.entries(
+    productData.finials
+  ).forEach(([key, data], index) => {
+
+    const button =
+      document.createElement(
+        "button"
+      );
+
+    button.className =
+      "finial-modal-btn";
+
+    button.textContent =
+      data.label;
+
+    if (
+      currentFinial === key ||
+      (!currentFinial && index === 0)
+    ) {
+
+      button.classList.add(
+        "active"
+      );
+
+    }
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        currentFinial =
+          key;
+
+        setVariant(
+          currentVariant
+        );
+
+        finialToggle.textContent =
+          data.label;
+
+        closeFinialModal();
+
+      }
+    );
+
+    finialModalList.appendChild(
+      button
+    );
+
+  });
+
+}
+
 
     viewer.addEventListener("pointerdown", () => {
 
@@ -1392,10 +1848,68 @@ camera-target="${target.x.toFixed(3)}m ${target.y.toFixed(3)}m ${target.z.toFixe
 
     });
 
+    document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    const finialModal =
+      document.getElementById(
+        "finialModal"
+      );
+
+    if (!finialModal)
+      return;
+
+    finialModal.addEventListener(
+      "click",
+      (e) => {
+
+        if (
+          e.target === finialModal
+        ) {
+
+          closeFinialModal();
+
+        }
+
+      }
+    );
+
+  }
+);
 
     loadProduct();
 
+    finialToggle.addEventListener(
+  "click",
+  openFinialModal
+);
+
   </script>
+
+<!-- MODAL MODELOS -->
+
+<div
+  id="finialModal"
+  class="finial-modal">
+
+  <div class="finial-modal-content">
+
+    <div class="finial-modal-title">
+
+      Seleccione<br>
+      un modelo
+
+    </div>
+
+    <div
+      id="finialModalList">
+
+    </div>
+
+  </div>
+
+</div>
 
 </body>
 

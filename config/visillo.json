@@ -1,0 +1,139 @@
+{
+  "nombre": "Novacort Visillo",
+
+  "variants": {
+
+    "base": {
+
+      "label": "Solo cortinero",
+
+      "model": "modelos/visillo.glb",
+
+      "cameraOrbit": "-34.5deg 75.8deg 4.29m",
+           
+      "mobileCameraOrbit": "-34.5deg 75.8deg 8.8m",
+
+      "cameraTarget": "-0.136m 0.036m -0.027m",
+
+      "fov": "12deg"
+
+    },
+
+        "animado": {
+
+      "label": "Aplicación",
+
+      "model": "modelos/visillo2.glb",
+
+      "cameraOrbit": "-34.5deg 75.8deg 6.2m",
+
+      "cameraTarget": "0.040m -1.189m 0.049m",
+
+      "fov": "60deg"
+
+    }
+
+  },
+
+  "hdri": "hdri/studio3.hdr",
+
+  "autoRotate": false,
+
+  "autoRotateSpeed": 0.015,
+
+  "hotspots": [
+
+  
+    {
+
+      "id": "hotspot1",
+
+      "title": "Soporte cental",
+
+      "description": "Soporte auxiliar incluido en cortineros mediano y grande para una mejor distribución de carga",
+
+      "position": "-0.002m 0.010m -0.001m",
+
+      "target": "-0.002m 0.010m -0.001m",
+
+      "orbit": "-382.2deg 63.3deg 1.2m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot2",
+
+      "title": "Beneficios",
+
+      "description": "Estructura de diseño ligero, duradero y de gran funcionalidad",
+
+      "position": "-0.267m -0.034m -0.023m",
+
+      "target": "-0.267m -0.034m -0.023m",
+
+      "orbit": "-114.7deg 81.4deg 2.41m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot3",
+
+      "title": "Sistema telescopico",
+
+      "description": "Longitud personalizable,  permite ajustar la longitud entre la mínima y maxíma dimensión del cortinero.",
+
+      "position": "-0.098m 0.007m -0.001m",
+
+      "target": "-0.098m 0.007m -0.001m",
+
+      "orbit": "-45.5deg 63.3deg 0.64m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot4",
+
+      "title": "Recubrimiento",
+
+      "description": "Pintura electrostática brillante resistente a la corrosión.",
+
+      "position": "0.198m -0.001m 0.010m",
+
+      "target": "0.198m -0.001m 0.010m",
+
+      "orbit": "-31.5deg 53.2deg 0.44m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot5",
+
+      "title": "Ménsulas",
+
+      "description": "Mensulas de fácil instalación en cualquier tipo de muro",
+
+      "position": "-0.995m -0.017m -0.096m",
+
+      "target": "-0.995m 0.017m -0.096m",
+
+      "orbit": "39.5deg 68.7deg 0.65m",
+
+      "fov": "7deg"
+
+    }
+
+  ]
+
+}

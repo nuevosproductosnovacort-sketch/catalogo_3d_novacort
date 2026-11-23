@@ -1,0 +1,154 @@
+{
+  "nombre": "Persiana enrollable",
+
+  "variants": {
+
+    "base": {
+
+      "label": "Solo persiana",
+
+      "model": "modelos/persiana.glb",
+
+      "cameraOrbit": "-35.3deg 76.2deg 3.30m",
+      "mobileCameraOrbit": "-35.3deg 76.2deg 3.30m",
+      "cameraTarget": "-0.039m -0.184m -0.021m",
+
+      "fov": "12deg"
+
+    },
+
+    "animado": {
+
+      "label": "Aplicación",
+
+      "model": "modelos/persiana2.glb",
+
+      "cameraOrbit": "-35deg 75deg 6.2m",
+
+      "mobileCameraOrbit": "-35deg 75deg 7.6m",
+
+      "cameraTarget": "0m -0.8m 0m",
+
+      "fov": "60deg"
+
+    }
+
+  },
+  
+"materials": [
+
+  {
+    "name": "persianablanca",
+    "color": "#e9e5dc"
+  },
+
+  {
+    "name": "persianabeige",
+    "color": "#bdb3a6"
+  }
+
+
+],
+
+  "hdri": "hdri/studio3.hdr",
+
+  "autoRotate": false,
+
+  "autoRotateSpeed": 0.015,
+
+  "hotspots": [
+
+    {
+
+      "id": "hotspot1",
+
+      "title": "Mecanismo",
+
+      "description": "Sistema para apertura, cierre o modulación de altura a voluntad, permite la rotación suave y continua de la cortina.",
+
+      "position": "0.499m -0.055m 0.019m",
+
+      "target": "0.499m -0.055m 0.019m",
+
+      "orbit": "-35.2deg 73.3deg 0.44m",
+
+      "fov": "8deg"
+
+    },
+
+
+    {
+
+      "id": "hotspot2",
+
+      "title": "Fijación",
+
+      "description": "Sistema de instalación mediante soportes fijos a techo o pared.",
+
+      "position": "0.489m -0.058m -0.032m",
+
+      "target": "0.489m -0.058m -0.032m",
+
+      "orbit": "135.9deg 61.2deg 1.57m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot3",
+
+      "title": "Contrapeso",
+
+      "description": "Mantiene la tela tensa para mantener una apariencia lisa y uniforme",
+
+      "position": "-0.481m -0.360m -0.003m",
+
+      "target": "-0.481m -0.360m -0.003m",
+
+      "orbit": "-58.8deg 77.4deg 0.85m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot4",
+
+      "title": "Cadena",
+
+      "description": "Complementa el mecanismo, de fácil operación convierte el movimiento vertical en rotación del eje para apertura o cierre",
+
+      "position": "0.498m -0.451m 0.004m",
+
+      "target": "0.498m -0.451m 0.004m",
+
+      "orbit": "54.8deg 67.1deg 0.37m",
+
+      "fov": "7deg"
+
+    },
+
+    {
+
+      "id": "hotspot5",
+
+      "title": "Materiales",
+
+      "description": "Tela 100% poliester, no se arruga ni mancha con facilidad",
+
+      "position": "-0.311m -0.050m 0.026m",
+
+      "target": "-0.311m -0.050m 0.026m",
+
+      "orbit": "-51.5deg 76.2deg 0.83m",
+
+      "fov": "7deg"
+
+    }
+
+  ]
+
+}

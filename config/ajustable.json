@@ -1,0 +1,30 @@
+{
+  "nombre": "Novacort Reforzado",
+
+  "variants": {
+
+    "base": {
+
+      "label": "Solo cortinero",
+
+      "model": "modelos/nuevoajustable.glb",
+
+      "cameraOrbit": "-35deg 75deg 2.4m",
+      "mobileCameraOrbit": "-35deg 75deg 5.2m",
+
+      "cameraTarget": "-0.095m -0.033m 0.01m",
+
+      "fov": "12deg"
+
+    }
+
+  },
+
+  "hdri": "hdri/studio3.hdr",
+
+  "autoRotate": true,
+
+  "autoRotateSpeed": 0.015
+
+
+}
